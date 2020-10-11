@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import {Header, Gap, InputText, Button} from '../../component';
 import {colors, fonts, showError, showSuccess} from '../../utils';
@@ -64,3 +65,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+ForgotPass.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};

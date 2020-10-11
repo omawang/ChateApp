@@ -15,11 +15,12 @@ export default function Home() {
 
   const getDataFire = () => {
     setLoading(true);
-    const url = `contentUser/`;
+    const url = 'contentUser/';
     Fire.database()
       .ref(url)
       .orderByChild('date')
       .limitToLast(50)
+      // eslint-disable-next-line no-shadow
       .on('value', (content) => {
         if (content.val()) {
           const dataContent = content.val();

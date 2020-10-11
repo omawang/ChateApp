@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
 import {Header, ChatContent, Gap, InputChat} from '../../component';
 import {fonts, colors, getData, setDateChat, getTimeChat} from '../../utils';
 import {Fire} from '../../config';
 
+// eslint-disable-next-line no-unused-vars
 const Width = Dimensions.get('window').width;
+// eslint-disable-next-line no-unused-vars
 const Height = Dimensions.get('window').height;
 
 export default function Chatting({navigation, route}) {
@@ -20,6 +23,7 @@ export default function Chatting({navigation, route}) {
   useEffect(() => {
     getDataLoka();
     getChatData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid, profile.uid]);
 
   const getDataLoka = () => {
@@ -112,10 +116,11 @@ export default function Chatting({navigation, route}) {
               <View key={item.id}>
                 <Text style={styles.date}>{item.id}</Text>
                 <Gap height={23} />
-                {item.data.map((itemChat) => {
+                {item.data.map((itemChat, index) => {
                   const isMe = profile.uid === itemChat.data.sendBy;
                   return (
                     <ChatContent
+                      key={`${item.id}-${index}`}
                       isMe={isMe}
                       text={itemChat.data.chatContent}
                       date={itemChat.data.chatTime}
@@ -149,3 +154,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+Chatting.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};

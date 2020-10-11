@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors, fonts, getData} from '../../../utils';
@@ -15,8 +16,8 @@ export default function UserProfile({onPress}) {
   useEffect(() => {
     getData('user').then((res) => {
       const data = res;
-      data.photo = {uri: res.photo};
-      setProfile(res);
+      data.photo = res.photo ? {uri: res.photo} : NullPhoto;
+      setProfile(data);
     });
   }, [profile.uid]);
   return (
@@ -76,3 +77,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+UserProfile.propTypes = {
+  onPress: PropTypes.func.isRequired,
+};

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import {IlLogo} from '../../assets';
 import {colors, fonts} from '../../utils';
-import {color} from 'react-native-reanimated';
 import {Fire} from '../../config';
 
 export default function Splash({navigation}) {
@@ -41,3 +41,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
+Splash.propTypes = {
+  navigation: PropTypes.object,
+};

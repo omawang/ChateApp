@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
@@ -39,3 +40,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
 });
+
+IsMe.propTypes = {
+  text: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+};

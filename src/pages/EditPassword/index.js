@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import {Header, Gap, InputText, Button} from '../../component';
 import {colors, fonts, showSuccess, showError} from '../../utils';
 import {IlLogo} from '../../assets';
 import {Fire} from '../../config';
 
-export default function ForgotPass({navigation, route}) {
+export default function EditPassword({navigation, route}) {
   const {email, fullName} = route.params;
   const [send, setSend] = useState(email);
 
@@ -61,3 +63,8 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
 });
+
+EditPassword.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {NullPhoto} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 export default function ProfilePhoto({name, email, onPress, photo}) {
@@ -49,3 +49,10 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 });
+
+ProfilePhoto.propTypes = {
+  name: PropTypes.string,
+  email: PropTypes.string,
+  onPress: PropTypes.func.isRequired,
+  photo: Image.propTypes.source.isRequired,
+};

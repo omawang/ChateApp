@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import ProfilePhoto from '../../component/molekul/ProfilePhoto';
 import {colors, fonts, showError, storeData} from '../../utils';
@@ -22,7 +23,7 @@ export default function UploadPhoto({navigation, route}) {
     },
   };
 
-  const UploadPhoto = () => {
+  const pickUploadPhoto = () => {
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response);
 
@@ -56,7 +57,7 @@ export default function UploadPhoto({navigation, route}) {
         <ProfilePhoto
           name={fullName}
           email={email}
-          onPress={UploadPhoto}
+          onPress={pickUploadPhoto}
           photo={photo}
         />
       </View>
@@ -92,3 +93,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+UploadPhoto.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};

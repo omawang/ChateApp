@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import PropTypes from 'prop-types';
 import {IlLogo} from '../../assets';
 import {Button, Gap, InputText, Link} from '../../component';
 import {
@@ -20,7 +21,7 @@ export default function Login({navigation}) {
     password: '',
   });
 
-  const Login = () => {
+  const submitLogin = () => {
     setLoading(true);
     Fire.auth()
       .signInWithEmailAndPassword(form.email, form.password)
@@ -48,8 +49,9 @@ export default function Login({navigation}) {
       <View style={styles.container}>
         <View>
           <IlLogo />
-          <Text
-            style={styles.text}>{`Start your day\nby greeting the world`}</Text>
+          <Text style={styles.text}>
+            {'Start your day\nby greeting the world'}
+          </Text>
         </View>
         <View>
           <InputText
@@ -70,7 +72,7 @@ export default function Login({navigation}) {
             onPress={() => navigation.navigate('ForgotPass')}
           />
           <Gap height={15} />
-          <Button title="Sing In" onPress={Login} />
+          <Button title="Sing In" onPress={submitLogin} />
           <Gap height={15} />
           <Link
             align="center"
@@ -99,3 +101,7 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
 });
+
+Login.propTypes = {
+  navigation: PropTypes.object,
+};

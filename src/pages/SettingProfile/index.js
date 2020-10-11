@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import {Gap, Header, ListItem} from '../../component';
 import {Fire} from '../../config';
@@ -81,3 +82,8 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
 });
+
+SettingProfile.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};

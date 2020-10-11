@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import {Button, Gap, Header, InputText, ProfilePhoto} from '../../component';
 import {colors, useForm, storeData, showError, showSuccess} from '../../utils';
@@ -120,3 +121,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
+
+EditProfile.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};

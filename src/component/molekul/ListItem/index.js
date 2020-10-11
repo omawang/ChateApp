@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   IcEditPassword,
@@ -9,7 +10,14 @@ import {
 } from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-export default function ListItem({onPress, name, desc, photo, icon, isMe}) {
+export default function ListItem({
+  onPress,
+  name,
+  desc,
+  photo,
+  icon,
+  isMe = false,
+}) {
   const Icon = () => {
     if (icon === 'edit_profile') {
       return <IcEditProfile />;
@@ -30,7 +38,13 @@ export default function ListItem({onPress, name, desc, photo, icon, isMe}) {
   }
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      {icon ? <Icon /> : <Image source={photo} style={styles.profile} />}
+      {icon ? (
+        <Icon />
+      ) : photo?.uri ? (
+        <Image source={photo} style={styles.profile} />
+      ) : (
+        <Icon />
+      )}
       <View style={styles.content}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.desc}>{desc}</Text>
@@ -71,3 +85,12 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
 });
+
+ListItem.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  photo: PropTypes.object.isRequired,
+  icon: PropTypes.string,
+  isMe: PropTypes.bool,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {fonts, colors} from '../../../utils';
 
@@ -11,7 +12,7 @@ export default function Link({title, onPress, align}) {
 }
 
 const styles = StyleSheet.create({
-  title: align => ( {
+  title: (align) => ({
     fontSize: 14,
     fontFamily: fonts.primary.normal,
     color: colors.text.secondary,
@@ -19,3 +20,9 @@ const styles = StyleSheet.create({
     marginTop: 15,
   }),
 });
+
+Link.propTypes = {
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+  align: PropTypes.string,
+};

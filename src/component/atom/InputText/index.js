@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View, TextInput} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
@@ -6,8 +7,8 @@ export default function InputText({
   title,
   value,
   onChangeText,
-  secureTextEntry,
-  disable,
+  secureTextEntry = false,
+  disable = false,
 }) {
   const [border, setBorder] = useState(colors.border.primary);
   const onFocusForm = () => {
@@ -49,3 +50,11 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   }),
 });
+
+InputText.propTypes = {
+  title: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
+  secureTextEntry: PropTypes.bool,
+  disable: PropTypes.bool,
+};

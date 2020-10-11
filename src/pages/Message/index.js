@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {ListItem} from '../../component';
 import {Fire} from '../../config';
@@ -26,9 +27,10 @@ export default function Message({navigation}) {
 
   const GetDataFire = () => {
     setLoading(true);
-    const url = `users/`;
+    const url = 'users/';
     Fire.database()
       .ref(url)
+      // eslint-disable-next-line no-shadow
       .on('value', (content) => {
         if (content.val()) {
           const dataContent = content.val();
@@ -65,13 +67,13 @@ export default function Message({navigation}) {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {loading && <LoaderMessage />}
-        {content.map((item) => {
+        {content.map((item, index) => {
           const data = item.data;
           const isMe = item.data.uid === profile.uid;
 
           return (
             <ListItem
-              keys={item.uid}
+              key={`${index}-${item.uid}`}
               onPress={() => navigation.navigate('Chatting', data)}
               photo={{uri: item.data.photo}}
               name={item.data.fullName}
@@ -99,3 +101,7 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
   },
 });
+
+Message.propTypes = {
+  navigation: PropTypes.object,
+};

@@ -1,13 +1,20 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import PropTypes from 'prop-types';
 import {colors, fonts} from '../../../utils';
-import {IcBackDark, IcBackLight} from '../../../assets';
+import {IcBackLight} from '../../../assets';
 
-export default function Button({onPress, title, type, Header, disable}) {
-  if (Header === 'Header') {
+export default function Button({
+  onPress,
+  title,
+  type,
+  header = false,
+  disable = false,
+}) {
+  if (header) {
     return (
       <TouchableOpacity onPress={onPress}>
-        {type == 'Dark' ? <IcBackLight /> : <IcBackLight />}
+        {type === 'Dark' ? <IcBackLight /> : <IcBackLight />}
       </TouchableOpacity>
     );
   }
@@ -51,3 +58,11 @@ const styles = StyleSheet.create({
     color: colors.disable.text,
   },
 });
+
+Button.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  type: PropTypes.string,
+  header: PropTypes.bool,
+  disable: PropTypes.bool,
+};

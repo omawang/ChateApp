@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
+import PropTypes from 'prop-types';
 import {Button, Gap, InputText, Header} from '../../component';
 import {colors, useForm, showError, showSuccess, storeData} from '../../utils';
 import {Fire} from '../../config';
@@ -95,3 +96,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 });
+
+Daftar.propTypes = {
+  navigation: PropTypes.object,
+};

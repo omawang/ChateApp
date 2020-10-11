@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import {colors} from '../../../utils';
 import TabItem from '../TabItem';
@@ -74,3 +75,9 @@ const styles = StyleSheet.create({
     elevation: 7,
   },
 });
+
+TabNavigator.propTypes = {
+  state: PropTypes.object,
+  descriptors: PropTypes.object,
+  navigation: PropTypes.object,
+};

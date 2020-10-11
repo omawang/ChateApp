@@ -1,8 +1,9 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import PropTypes from 'prop-types';
+import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-export default function Other({text, date}) {
+export default function Other({text, date, photo}) {
   return (
     <View style={styles.container}>
       <View>
@@ -42,3 +43,9 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
 });
+
+Other.propTypes = {
+  text: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  photo: PropTypes.string,
+};

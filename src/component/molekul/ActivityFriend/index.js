@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import ViewMoreText from 'react-native-view-more-text';
 import {colors, fonts} from '../../../utils';
@@ -93,3 +94,10 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[600],
   },
 });
+
+ActivityFriend.propTypes = {
+  photo: Image.propTypes.source.isRequired,
+  desc: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  imageContent: Image.propTypes.source.isRequired,
+};

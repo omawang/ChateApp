@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {
-    IcHome,
-
-
-    IcHomeAvtive, IcMessage,
-
-
-    IcMessageActive, IcProfile, IcProfileActive
+  IcHome,
+  IcHomeAvtive,
+  IcMessage,
+  IcMessageActive,
+  IcProfile,
+  IcProfileActive,
 } from '../../../assets';
-import { colors, fonts } from '../../../utils';
+import {colors, fonts} from '../../../utils';
 
 export default function TabItem({title, active, onPress, onLongPress}) {
   const Icon = () => {
@@ -46,3 +46,10 @@ const styles = StyleSheet.create({
     color: active ? colors.text.active : colors.text.inactive,
   }),
 });
+
+TabItem.propTypes = {
+  title: PropTypes.string,
+  active: PropTypes.bool,
+  onPress: PropTypes.func.isRequired,
+  onLongPress: PropTypes.func,
+};

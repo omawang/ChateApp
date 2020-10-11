@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, Text, View} from 'react-native';
 import {IlWelcome} from '../../assets';
 import {Button, Gap, Link} from '../../component';
@@ -45,3 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 70,
   },
 });
+
+GetStarted.propTypes = {
+  navigation: PropTypes.object,
+};

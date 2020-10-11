@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {
   Dimensions,
   Image,
@@ -38,9 +39,10 @@ export default function Profile({navigation}) {
 
   const getDataFire = () => {
     setLoading(true);
-    const url = `contentUser/`;
+    const url = 'contentUser/';
     Fire.database()
       .ref(url)
+      // eslint-disable-next-line no-shadow
       .on('value', (content) => {
         if (content.val()) {
           const dataContent = content.val();
@@ -83,19 +85,19 @@ export default function Profile({navigation}) {
 
             {loading && <LoaderProfile />}
             <View style={styles.contentContent}>
-              {content.map((item) => {
+              {content.map((item, index) => {
                 const isMe = item.data.uid === profile.uid;
                 console.log(isMe);
                 if (isMe) {
                   return (
                     <Image
-                      key={item.id}
+                      key={`${index}-${item.id}`}
                       source={{uri: item.data.imageContent}}
                       style={styles.photoContent}
                     />
                   );
                 }
-                return <View />;
+                return <View key={`${index}-${item.id}`} />;
               })}
             </View>
           </View>
@@ -160,3 +162,7 @@ const styles = StyleSheet.create({
     margin: 3,
   },
 });
+
+Profile.propTypes = {
+  navigation: PropTypes.object,
+};

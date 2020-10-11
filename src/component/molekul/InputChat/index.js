@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import {IcEmot, IcSendActive} from '../../../assets';
+import {IcSendActive} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const ButtonIcon = ({disable, onPress}) => {
+const ButtonIcon = ({disable = false, onPress}) => {
   if (disable) {
     return (
       <View style={styles.send(disable)}>
@@ -18,9 +19,14 @@ const ButtonIcon = ({disable, onPress}) => {
   );
 };
 
+ButtonIcon.propTypes = {
+  disable: PropTypes.bool,
+  onPress: PropTypes.func,
+};
+
 export default function InputChat({
   name,
-  disable,
+  disable = false,
   onPress,
   value,
   onChangeText,
@@ -73,3 +79,11 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
 });
+
+InputChat.propTypes = {
+  name: PropTypes.string.isRequired,
+  disable: PropTypes.bool,
+  onPress: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
+};

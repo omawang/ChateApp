@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {
   Image,
   StyleSheet,
@@ -129,3 +130,8 @@ const styles = StyleSheet.create({
     // backgroundColor: colors.dark2,
   }),
 });
+
+ShareMoments.propTypes = {
+  navigation: PropTypes.object,
+  route: PropTypes.object,
+};
