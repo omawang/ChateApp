@@ -14,7 +14,7 @@ export default function Daftar({navigation}) {
     password: '',
   });
 
-  const Register = () => {
+  const submitRegister = () => {
     setLoading(true);
     // navigation.replace('UploadPhoto');
 
@@ -46,38 +46,36 @@ export default function Daftar({navigation}) {
     <>
       <View style={styles.container}>
         <Header title="Daftar Akun" onPress={() => navigation.goBack()} />
-        <View style={styles.content}>
-          <View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <InputText
-                title="Full Name"
-                value={form.fullName}
-                onChangeText={(value) => SetForm('fullName', value)}
-              />
-              <Gap height={24} />
-              <InputText
-                title="No Phone"
-                value={form.noPhone}
-                onChangeText={(value) => SetForm('noPhone', value)}
-              />
-              <Gap height={24} />
-              <InputText
-                title="Email Address"
-                value={form.email}
-                onChangeText={(value) => SetForm('email', value)}
-              />
-              <Gap height={24} />
-              <InputText
-                title="Password"
-                secureTextEntry
-                value={form.password}
-                onChangeText={(value) => SetForm('password', value)}
-              />
-            </ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.content}>
+            <InputText
+              title="Full Name"
+              value={form.fullName}
+              onChangeText={(value) => SetForm('fullName', value)}
+            />
+            <Gap height={24} />
+            <InputText
+              title="No Phone"
+              value={form.noPhone}
+              onChangeText={(value) => SetForm('noPhone', value)}
+            />
+            <Gap height={24} />
+            <InputText
+              title="Email Address"
+              value={form.email}
+              onChangeText={(value) => SetForm('email', value)}
+            />
+            <Gap height={24} />
+            <InputText
+              title="Password"
+              secureTextEntry
+              value={form.password}
+              onChangeText={(value) => SetForm('password', value)}
+            />
+            <Gap height={30} />
+            <Button title="Sign Up" onPress={submitRegister} />
           </View>
-          <Gap height={30} />
-          <Button title="Sign Up" onPress={Register} />
-        </View>
+        </ScrollView>
       </View>
       {loading && <Loading />}
     </>
